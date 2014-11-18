@@ -51,6 +51,9 @@
 		case FlickrPhotoFormatSquare:    formatString = @"s"; break;
 		case FlickrPhotoFormatLarge:     formatString = @"b"; break;
 		case FlickrPhotoFormatOriginal:  formatString = @"o"; break;
+        case FlickrPhotoFormat240:       formatString = @"m"; break;
+        case FlickrPhotoFormat320:       formatString = @"n"; break;
+        case FlickrPhotoFormat500:       formatString = @""; break;
 	}
     
 	return [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_%@.%@", farm, server, photo_id, secret, formatString, fileType];

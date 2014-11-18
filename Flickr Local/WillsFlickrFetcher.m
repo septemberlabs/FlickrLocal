@@ -12,7 +12,7 @@
 
 + (NSURL *)URLforLatLon:(CLLocationCoordinate2D)latlon withinRadius:(float)radius
 {
-    return [self URLForQuery:[NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&lat=%f&lon=%f&radius=%f&per_page=200&extras=original_format,tags,description,geo,date_upload,owner_name,place_url", latlon.latitude, latlon.longitude, radius]];
+    return [self URLForQuery:[NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&lat=%f&lon=%f&radius=%f&per_page=11&extras=original_format,tags,description,geo,date_upload,owner_name,place_url", latlon.latitude, latlon.longitude, radius]];
 }
 
 @end

@@ -13,24 +13,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FlickrLocalPhotoCell" textLabel="QG1-3g-NVh" detailTextLabel="8aT-Mc-JWM" style="IBUITableViewCellStyleSubtitle" id="JRe-2t-2hd">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FlickrPhotoCell" id="JRe-2t-2hd">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JRe-2t-2hd" id="ql9-al-KJa">
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QG1-3g-NVh">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8aT-Mc-JWM">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -42,7 +28,36 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hh7-hq-qWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259" y="118"/>
+            <point key="canvasLocation" x="464" y="-176"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Hb9-Z8-twr">
+            <objects>
+                <viewController id="OKL-gL-Hhy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rEz-z7-UlS"/>
+                        <viewControllerLayoutGuide type="bottom" id="fWG-Jj-nqP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9bJ-X7-tbT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gcj-1g-fDE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gcj-1g-fDE" firstAttribute="leading" secondItem="9bJ-X7-tbT" secondAttribute="leading" id="3NQ-m8-g69"/>
+                            <constraint firstItem="gcj-1g-fDE" firstAttribute="top" secondItem="9bJ-X7-tbT" secondAttribute="top" id="8ER-pK-vba"/>
+                            <constraint firstAttribute="trailing" secondItem="gcj-1g-fDE" secondAttribute="trailing" id="k1a-Es-eEL"/>
+                            <constraint firstItem="gcj-1g-fDE" firstAttribute="bottom" secondItem="fWG-Jj-nqP" secondAttribute="top" id="oeN-PI-edy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Rq-Ib-l4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="-176"/>
         </scene>
     </scenes>
 </document>

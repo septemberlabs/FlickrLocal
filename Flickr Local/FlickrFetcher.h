@@ -28,8 +28,13 @@
 #define FLICKR_LONGITUDE @"longitude"
 #define FLICKR_TAGS @"tags"
 
-typedef enum {
-	FlickrPhotoFormatSquare = 1,    // thumbnail
+typedef enum {  // from https://www.flickr.com/services/api/misc.urls.html
+    /* added by Will */
+    FlickrPhotoFormat240 = 4, // small, 240 on longest side
+    FlickrPhotoFormat320 = 8, // small, 320 on longest side
+    FlickrPhotoFormat500 = 16, // medium, 500 on longest side
+    
+    FlickrPhotoFormatSquare = 1,    // thumbnail
 	FlickrPhotoFormatLarge = 2,     // normal size
 	FlickrPhotoFormatOriginal = 64  // high resolution
 } FlickrPhotoFormat;
