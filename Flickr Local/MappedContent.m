@@ -10,14 +10,17 @@
 
 @implementation MappedContent
 
-- (CLLocationCoordinate2D)coordinate
+@synthesize coordinate = _coordinate;
+
+- (id)initWithTitle:(NSString *)newTitle Location:(CLLocationCoordinate2D)location
 {
-    CLLocationCoordinate2D coordinate;
+    self = [super init];
     
-    coordinate.latitude = self.latitude;
-    coordinate.longitude = self.longitude;
-    
-    return coordinate;
+    if (self) {
+        _title = newTitle;
+        _coordinate = location;
+    }
+    return self;
 }
 
 @end

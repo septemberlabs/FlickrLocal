@@ -7,8 +7,49 @@
 
 #import "FlickrFetcher.h"
 #import "FlickrAPIKey.h"
+#import "FlickrMappedContent.h"
 
 @implementation FlickrFetcher
+
+- (void)fetchData
+{
+    CLLocationCoordinate2D targetLocation = lincolnMemorial;
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[FlickrFetcher URLforLatLon:targetLocation withinRadius:LATLON_RADIUS]];
+    NSURLSessionDownloadTask *task = [self.urlSession downloadTaskWithRequest:request
+        completionHandler:^(NSURL *localFile, NSURLResponse *response, NSError *error) {
+            if (!error) {
+                NSDictionary *flickrPropertyList;
+                NSData *flickrJSONData = [NSData dataWithContentsOfURL:localFile]; // will block if url is not local!
+                if (flickrJSONData) {
+                    flickrPropertyList = [NSJSONSerialization JSONObjectWithData:flickrJSONData options:0 error:NULL];
+                }
+                NSArray *photos = [flickrPropertyList valueForKeyPath:FLICKR_RESULTS_PHOTOS];
+                NSMutableArray *processedForTVC = [NSMutableArray arrayWithCapacity:[photos count]];
+                for (NSDictionary *photo in photos) {
+                    CLLocationCoordinate2D location;
+                    location.latitude = [photo[@"latitude"] doubleValue];
+                    location.longitude = [photo[@"longitude"] doubleValue];
+                    FlickrMappedContent *processedPhoto = [[FlickrMappedContent alloc] initWithTitle:photo[@"title"] Location:location];
+                    processedPhoto.subtitle = photo[@"ownername"];
+                    processedPhoto.thumbnail = [[FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatSquare] absoluteString];
+                    processedPhoto.large = [[FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge] absoluteString];
+                    [processedForTVC addObject:processedPhoto];
+                }
+                //NSLog(@"processedForTVC: %@", processedForTVC);
+                //NSLog(@"results: %@", flickrPropertyList);
+                //NSLog(@"photos: %@", photos);
+                //NSLog(@"photo: %@", photos[0]);
+                if (self.delegate && [self.delegate respondsToSelector:@selector(receiveData:)]) {
+                    [self.delegate receiveData:processedForTVC];
+                }
+            }
+            else {
+                NSLog(@"Flickr background fetch failed: %@", error.localizedDescription);
+            }
+        }];
+    [task resume];
+}
 
 + (NSURL *)URLForQuery:(NSString *)query
 {
@@ -80,6 +121,7 @@
 #define FLICKR_PLACE_COUNTRY_NAME @"place.country._content"
 #define FLICKR_PLACE_COUNTRY_PLACE_ID @"place.country.place_id"
 #define FLICKR_PLACE_REGION @"place.region"
+#define HOW_MANY 100
 
 + (NSString *)extractNameOfPlace:(id)placeId fromPlaceInformation:(NSDictionary *)place
 {
@@ -103,6 +145,12 @@
 + (NSString *)extractRegionNameFromPlaceInformation:(NSDictionary *)place
 {
     return [place valueForKeyPath:FLICKR_PLACE_REGION_NAME];
+}
+
+/* added by Will */
++ (NSURL *)URLforLatLon:(CLLocationCoordinate2D)latlon withinRadius:(float)radius
+{
+    return [self URLForQuery:[NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&lat=%f&lon=%f&radius=%f&per_page=%d&extras=original_format,tags,description,geo,date_upload,owner_name,place_url", latlon.latitude, latlon.longitude, radius, HOW_MANY]];
 }
 
 @end

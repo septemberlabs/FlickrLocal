@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Fetcher.h"
 
-@interface FlickrTVC : UITableViewController
+@interface HoodieTVC : UITableViewController <FetcherView>
 @end

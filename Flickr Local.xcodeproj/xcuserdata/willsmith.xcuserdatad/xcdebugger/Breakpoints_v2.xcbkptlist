@@ -9,14 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flickr Local/FlickrTVC.h"
-            timestampString = "438013326.627265"
+            filePath = "Flickr Local/Fetcher.m"
+            timestampString = "438138222.198116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "@interface FlickrTVC"
-            landmarkType = "2">
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-fetchData"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

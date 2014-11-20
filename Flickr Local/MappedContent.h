@@ -11,14 +11,10 @@
 
 @interface MappedContent : NSObject <MKAnnotation>
 
-@property (nonatomic) double latitude;
-@property (nonatomic) double longitude;
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
 
-/*
- universal:
- * hold lat/lon
- * display table view cell?
- * how to get data
- */
+- (id)initWithTitle:(NSString *)newTitle Location:(CLLocationCoordinate2D)location;
 
 @end
