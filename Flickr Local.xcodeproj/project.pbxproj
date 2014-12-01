@@ -7,19 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A05852A1A292632009DD3DA /* HoodieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0585291A292632009DD3DA /* HoodieTableViewCell.xib */; };
+		1A05852D1A292662009DD3DA /* HoodieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A05852C1A292662009DD3DA /* HoodieTableViewCell.m */; };
+		1A0585311A2A421E009DD3DA /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0585301A2A421E009DD3DA /* MapVC.m */; };
 		1A577F211A08329B00CF56F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A577F201A08329B00CF56F1 /* main.m */; };
 		1A577F241A08329B00CF56F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A577F231A08329B00CF56F1 /* AppDelegate.m */; };
 		1A577F2A1A08329B00CF56F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A577F281A08329B00CF56F1 /* Main.storyboard */; };
 		1A577F2C1A08329B00CF56F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A577F2B1A08329B00CF56F1 /* Images.xcassets */; };
 		1A577F3B1A08329B00CF56F1 /* Flickr_LocalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A577F3A1A08329B00CF56F1 /* Flickr_LocalTests.m */; };
 		1A577F471A08331300CF56F1 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A577F461A08331300CF56F1 /* FlickrFetcher.m */; };
+		1A62A2571A22731200BB2415 /* OptionsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62A2561A22731200BB2415 /* OptionsTVC.m */; };
+		1A62A25A1A22BB1900BB2415 /* ExclusiveSelectionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A62A2591A22BB1900BB2415 /* ExclusiveSelectionList.m */; };
 		1A6D5B201A1B805E003C5224 /* MappedContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D5B1F1A1B805E003C5224 /* MappedContent.m */; };
 		1A6D5B221A1B8119003C5224 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6D5B211A1B8119003C5224 /* MapKit.framework */; };
 		1A6D5B251A1C0550003C5224 /* Fetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D5B241A1C0550003C5224 /* Fetcher.m */; };
 		1A7DB2481A1058F1009175AE /* HoodieTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7DB2471A1058F1009175AE /* HoodieTVC.m */; };
 		1A8E4B311A1D7E6A0010C452 /* FlickrMappedContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8E4B301A1D7E6A0010C452 /* FlickrMappedContent.m */; };
-		1AA76CA11A1CCDDE00DC4992 /* FlickrTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA76CA01A1CCDDE00DC4992 /* FlickrTableViewCell.m */; };
-		1AA76CA31A1CCE4200DC4992 /* FlickrTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AA76CA21A1CCE4200DC4992 /* FlickrTableViewCell.xib */; };
+		1AD800011A1E4820002905CF /* MapVC_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD800001A1E4820002905CF /* MapVC_old.m */; };
+		1AD8FFF81A1E2B82002905CF /* HoodieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FFF71A1E2B82002905CF /* HoodieVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A0585291A292632009DD3DA /* HoodieTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HoodieTableViewCell.xib; sourceTree = "<group>"; };
+		1A05852B1A292662009DD3DA /* HoodieTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoodieTableViewCell.h; sourceTree = "<group>"; };
+		1A05852C1A292662009DD3DA /* HoodieTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoodieTableViewCell.m; sourceTree = "<group>"; };
+		1A05852F1A2A421E009DD3DA /* MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC.h; sourceTree = "<group>"; };
+		1A0585301A2A421E009DD3DA /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
 		1A577F1B1A08329B00CF56F1 /* Flickr Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flickr Local.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A577F1F1A08329B00CF56F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A577F201A08329B00CF56F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,6 +56,10 @@
 		1A577F441A08331300CF56F1 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 		1A577F451A08331300CF56F1 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
 		1A577F461A08331300CF56F1 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		1A62A2551A22731200BB2415 /* OptionsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTVC.h; sourceTree = "<group>"; };
+		1A62A2561A22731200BB2415 /* OptionsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTVC.m; sourceTree = "<group>"; };
+		1A62A2581A22BB1900BB2415 /* ExclusiveSelectionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExclusiveSelectionList.h; sourceTree = "<group>"; };
+		1A62A2591A22BB1900BB2415 /* ExclusiveSelectionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExclusiveSelectionList.m; sourceTree = "<group>"; };
 		1A6D5B1E1A1B805E003C5224 /* MappedContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappedContent.h; sourceTree = "<group>"; };
 		1A6D5B1F1A1B805E003C5224 /* MappedContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappedContent.m; sourceTree = "<group>"; };
 		1A6D5B211A1B8119003C5224 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -55,9 +69,10 @@
 		1A7DB2471A1058F1009175AE /* HoodieTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoodieTVC.m; sourceTree = "<group>"; };
 		1A8E4B2F1A1D7E6A0010C452 /* FlickrMappedContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrMappedContent.h; sourceTree = "<group>"; };
 		1A8E4B301A1D7E6A0010C452 /* FlickrMappedContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrMappedContent.m; sourceTree = "<group>"; };
-		1AA76C9F1A1CCDDE00DC4992 /* FlickrTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTableViewCell.h; sourceTree = "<group>"; };
-		1AA76CA01A1CCDDE00DC4992 /* FlickrTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTableViewCell.m; sourceTree = "<group>"; };
-		1AA76CA21A1CCE4200DC4992 /* FlickrTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlickrTableViewCell.xib; sourceTree = "<group>"; };
+		1AD800001A1E4820002905CF /* MapVC_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC_old.m; sourceTree = "<group>"; };
+		1AD8FFF61A1E2B82002905CF /* HoodieVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoodieVC.h; sourceTree = "<group>"; };
+		1AD8FFF71A1E2B82002905CF /* HoodieVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoodieVC.m; sourceTree = "<group>"; };
+		1AD8FFFF1A1E4820002905CF /* MapVC_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC_old.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A05852E1A2A41E0009DD3DA /* OLD */ = {
+			isa = PBXGroup;
+			children = (
+				1AD8FFFF1A1E4820002905CF /* MapVC_old.h */,
+				1AD800001A1E4820002905CF /* MapVC_old.m */,
+			);
+			name = OLD;
+			sourceTree = "<group>";
+		};
 		1A577F121A08329B00CF56F1 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +125,11 @@
 		1A577F1D1A08329B00CF56F1 /* Flickr Local */ = {
 			isa = PBXGroup;
 			children = (
+				1A0585291A292632009DD3DA /* HoodieTableViewCell.xib */,
+				1A05852B1A292662009DD3DA /* HoodieTableViewCell.h */,
+				1A05852C1A292662009DD3DA /* HoodieTableViewCell.m */,
+				1AD8FFF61A1E2B82002905CF /* HoodieVC.h */,
+				1AD8FFF71A1E2B82002905CF /* HoodieVC.m */,
 				1A7DB2461A1058F1009175AE /* HoodieTVC.h */,
 				1A7DB2471A1058F1009175AE /* HoodieTVC.m */,
 				1A6D5B1E1A1B805E003C5224 /* MappedContent.h */,
@@ -111,8 +140,14 @@
 				1A577F221A08329B00CF56F1 /* AppDelegate.h */,
 				1A577F231A08329B00CF56F1 /* AppDelegate.m */,
 				1A577F281A08329B00CF56F1 /* Main.storyboard */,
+				1A05852F1A2A421E009DD3DA /* MapVC.h */,
+				1A0585301A2A421E009DD3DA /* MapVC.m */,
+				1A62A2551A22731200BB2415 /* OptionsTVC.h */,
+				1A62A2561A22731200BB2415 /* OptionsTVC.m */,
+				1A62A2581A22BB1900BB2415 /* ExclusiveSelectionList.h */,
+				1A62A2591A22BB1900BB2415 /* ExclusiveSelectionList.m */,
 				1A577F2B1A08329B00CF56F1 /* Images.xcassets */,
-				1A8E4B2E1A1D706B0010C452 /* Custom Cell Stuff - To Revisit */,
+				1A05852E1A2A41E0009DD3DA /* OLD */,
 				1A577F1E1A08329B00CF56F1 /* Supporting Files */,
 			);
 			path = "Flickr Local";
@@ -154,16 +189,6 @@
 				1A6D5B241A1C0550003C5224 /* Fetcher.m */,
 			);
 			name = Fetchers;
-			sourceTree = "<group>";
-		};
-		1A8E4B2E1A1D706B0010C452 /* Custom Cell Stuff - To Revisit */ = {
-			isa = PBXGroup;
-			children = (
-				1AA76C9F1A1CCDDE00DC4992 /* FlickrTableViewCell.h */,
-				1AA76CA01A1CCDDE00DC4992 /* FlickrTableViewCell.m */,
-				1AA76CA21A1CCE4200DC4992 /* FlickrTableViewCell.xib */,
-			);
-			name = "Custom Cell Stuff - To Revisit";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,7 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AA76CA31A1CCE4200DC4992 /* FlickrTableViewCell.xib in Resources */,
+				1A05852A1A292632009DD3DA /* HoodieTableViewCell.xib in Resources */,
 				1A577F2A1A08329B00CF56F1 /* Main.storyboard in Resources */,
 				1A577F2C1A08329B00CF56F1 /* Images.xcassets in Resources */,
 			);
@@ -267,13 +292,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A577F241A08329B00CF56F1 /* AppDelegate.m in Sources */,
-				1AA76CA11A1CCDDE00DC4992 /* FlickrTableViewCell.m in Sources */,
+				1A62A25A1A22BB1900BB2415 /* ExclusiveSelectionList.m in Sources */,
 				1A6D5B201A1B805E003C5224 /* MappedContent.m in Sources */,
+				1A05852D1A292662009DD3DA /* HoodieTableViewCell.m in Sources */,
+				1AD8FFF81A1E2B82002905CF /* HoodieVC.m in Sources */,
 				1A577F471A08331300CF56F1 /* FlickrFetcher.m in Sources */,
 				1A6D5B251A1C0550003C5224 /* Fetcher.m in Sources */,
+				1A62A2571A22731200BB2415 /* OptionsTVC.m in Sources */,
+				1A0585311A2A421E009DD3DA /* MapVC.m in Sources */,
 				1A8E4B311A1D7E6A0010C452 /* FlickrMappedContent.m in Sources */,
 				1A7DB2481A1058F1009175AE /* HoodieTVC.m in Sources */,
 				1A577F211A08329B00CF56F1 /* main.m in Sources */,
+				1AD800011A1E4820002905CF /* MapVC_old.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

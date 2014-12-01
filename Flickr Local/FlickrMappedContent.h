@@ -10,7 +10,4 @@
 
 @interface FlickrMappedContent : MappedContent
 
-@property (nonatomic, strong) NSString *thumbnail;
-@property (nonatomic, strong) NSString *large;
-
 @end

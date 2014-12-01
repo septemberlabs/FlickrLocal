@@ -16,6 +16,7 @@
     CLLocationCoordinate2D targetLocation = lincolnMemorial;
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[FlickrFetcher URLforLatLon:targetLocation withinRadius:LATLON_RADIUS]];
+    NSLog(@"URL we're loading: %@", [[FlickrFetcher URLforLatLon:targetLocation withinRadius:LATLON_RADIUS] absoluteString]);
     NSURLSessionDownloadTask *task = [self.urlSession downloadTaskWithRequest:request
         completionHandler:^(NSURL *localFile, NSURLResponse *response, NSError *error) {
             if (!error) {
@@ -32,8 +33,8 @@
                     location.longitude = [photo[@"longitude"] doubleValue];
                     FlickrMappedContent *processedPhoto = [[FlickrMappedContent alloc] initWithTitle:photo[@"title"] Location:location];
                     processedPhoto.subtitle = photo[@"ownername"];
-                    processedPhoto.thumbnail = [[FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatSquare] absoluteString];
-                    processedPhoto.large = [[FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge] absoluteString];
+                    processedPhoto.thumbnailURL = [[FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatSquare] absoluteString];
+                    processedPhoto.largeURL = [[FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge] absoluteString];
                     [processedForTVC addObject:processedPhoto];
                 }
                 //NSLog(@"processedForTVC: %@", processedForTVC);
@@ -45,7 +46,8 @@
                 }
             }
             else {
-                NSLog(@"Flickr background fetch failed: %@", error.localizedDescription);
+                NSLog(@"Flickr fetch failed: %@", error.localizedDescription);
+                NSLog(@"Flickr fetch failed: %@", error.userInfo);
             }
         }];
     [task resume];

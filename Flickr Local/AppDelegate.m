@@ -13,7 +13,23 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    NSMutableArray *keys = [NSMutableArray array];
+    NSMutableArray *objects = [NSMutableArray array];
+    
+    // order by which news stories are displayed
+    NSDictionary *displayOrder = @{@"Location" : [NSNumber numberWithBool:YES],
+                                   @"Date" : [NSNumber numberWithBool:NO],
+                                   @"Magic" : [NSNumber numberWithBool:NO]};
+    [keys addObject:@"displayOrder"];
+    [objects addObject:displayOrder];
+    
+    // radius in which to look for stories
+    [keys addObject:@"radius"];
+    [objects addObject:[NSNumber numberWithFloat:0.5]];
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
     
     // Override point for customization after application launch.
     return YES;

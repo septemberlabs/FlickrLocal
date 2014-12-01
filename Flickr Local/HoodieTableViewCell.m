@@ -1,14 +1,14 @@
 //
-//  FlickrTableViewCell.m
+//  HoodieTableViewCell.m
 //  Flickr Local
 //
-//  Created by Will Smith on 11/19/14.
+//  Created by Will Smith on 11/28/14.
 //  Copyright (c) 2014 Will Smith. All rights reserved.
 //
 
-#import "FlickrTableViewCell.h"
+#import "HoodieTableViewCell.h"
 
-@implementation FlickrTableViewCell
+@implementation HoodieTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
