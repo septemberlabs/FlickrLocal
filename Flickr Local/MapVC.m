@@ -134,8 +134,129 @@
         pinView.annotation = annotation;
     }
 
-    NSLog(@"Can show callout? %d", pinView.canShowCallout);
     return pinView;
+}
+
+#pragma mark - Search Display Controller TVC
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"numberOfRowsInSection called.");
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"cellForRowAtIndexPath called.");
+    return nil;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    NSLog(@"numberOfSectionsInTableView called.");
+    return 0;
+}
+
+#pragma mark - Search Bar
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    NSLog(@"searchBarTextDidEndEditing called.");
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"searchBarSearchButtonClicked called with text: %@", searchBar.text);
+    
+    // Create and initialize a search request object.
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    NSString *query = searchBar.text;
+    request.naturalLanguageQuery = query;
+    // TO DO: set the region to the DMV
+    // request.region = self.map.region;
+    
+    // Create and initialize a search object.
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    
+    // Start the search and display the results as annotations on the map.
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
+    {
+        if (!error) {
+            NSMutableArray *placemarks = [NSMutableArray array];
+            for (MKMapItem *item in response.mapItems) {
+                [placemarks addObject:item.name];
+            }
+            //[self.map removeAnnotations:[self.map annotations]];
+            //[self.map showAnnotations:placemarks animated:NO];
+        }
+        else {
+            NSLog(@"Search failed: %@", error.localizedDescription);
+        }
+    }];
+}
+
+#pragma mark - UISearchDisplayDelegate
+
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    NSLog(@"1 searchDisplayControllerWillBeginSearch called.");
+}
+
+- (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
+{
+    NSLog(@"2 searchDisplayControllerDidBeginSearch called.");
+}
+
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
+{
+    NSLog(@"3 searchDisplayControllerWillEndSearch called.");
+}
+
+- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    NSLog(@"4 searchDisplayControllerDidEndSearch called.");
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
+{
+    NSLog(@"5 didLoadSearchResultsTableView called.");
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller willUnloadSearchResultsTableView:(UITableView *)tableView
+{
+    NSLog(@"6 willUnloadSearchResultsTableView called.");
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
+{
+    NSLog(@"7 willShowSearchResultsTableView called.");
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
+{
+    NSLog(@"8 didShowSearchResultsTableView called.");
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller willHideSearchResultsTableView:(UITableView *)tableView
+{
+    NSLog(@"9 willHideSearchResultsTableView called.");
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
+{
+    NSLog(@"10 didHideSearchResultsTableView called.");
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    NSLog(@"11 shouldReloadTableForSearchString called.");
+    return YES;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+    NSLog(@"12 shouldReloadTableForSearchScope called.");
+    return YES;
 }
 
 @end

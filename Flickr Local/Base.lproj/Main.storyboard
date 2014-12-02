@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VqA-OD-s42">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VqA-OD-s42">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -197,23 +198,43 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gcj-1g-fDE">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </mapView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eKu-6B-9zL">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="OKL-gL-Hhy" id="G4A-Kj-N6s"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gcj-1g-fDE" firstAttribute="top" secondItem="9bJ-X7-tbT" secondAttribute="top" id="4up-kh-3KC"/>
-                            <constraint firstAttribute="trailing" secondItem="gcj-1g-fDE" secondAttribute="trailing" id="ZP1-f6-1m4"/>
-                            <constraint firstItem="gcj-1g-fDE" firstAttribute="leading" secondItem="9bJ-X7-tbT" secondAttribute="leading" id="nLe-ad-1nm"/>
-                            <constraint firstItem="gcj-1g-fDE" firstAttribute="bottom" secondItem="fWG-Jj-nqP" secondAttribute="top" id="yAV-nr-RJv"/>
+                            <constraint firstItem="gcj-1g-fDE" firstAttribute="bottom" secondItem="fWG-Jj-nqP" secondAttribute="top" id="5ZL-of-3ox"/>
+                            <constraint firstItem="eKu-6B-9zL" firstAttribute="trailing" secondItem="gcj-1g-fDE" secondAttribute="trailing" id="GYA-x4-RNY"/>
+                            <constraint firstItem="gcj-1g-fDE" firstAttribute="leading" secondItem="9bJ-X7-tbT" secondAttribute="leading" id="OBN-mV-ACJ"/>
+                            <constraint firstItem="eKu-6B-9zL" firstAttribute="leading" secondItem="gcj-1g-fDE" secondAttribute="leading" id="SLO-5O-HQ9"/>
+                            <constraint firstAttribute="trailing" secondItem="gcj-1g-fDE" secondAttribute="trailing" id="Upv-6G-FfK"/>
+                            <constraint firstItem="eKu-6B-9zL" firstAttribute="top" secondItem="rEz-z7-UlS" secondAttribute="bottom" id="mxh-PD-kyv"/>
+                            <constraint firstItem="gcj-1g-fDE" firstAttribute="top" secondItem="9bJ-X7-tbT" secondAttribute="top" id="r7Q-8X-WgM"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="gGM-y2-dwd"/>
                     <connections>
                         <outlet property="mapView" destination="gcj-1g-fDE" id="qkx-Lm-1yf"/>
+                        <outlet property="searchDisplayController" destination="r1A-nw-0Vg" id="45I-yh-cGg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Rq-Ib-l4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="r1A-nw-0Vg">
+                    <connections>
+                        <outlet property="delegate" destination="OKL-gL-Hhy" id="353-YL-vpn"/>
+                        <outlet property="searchBar" destination="eKu-6B-9zL" id="s4R-g6-Mag"/>
+                        <outlet property="searchContentsController" destination="OKL-gL-Hhy" id="fvO-V9-dwc"/>
+                        <outlet property="searchResultsDataSource" destination="OKL-gL-Hhy" id="NIO-Ox-p6e"/>
+                        <outlet property="searchResultsDelegate" destination="OKL-gL-Hhy" id="uLu-e4-aLP"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-777" y="-1112"/>
+            <point key="canvasLocation" x="-777" y="-1113"/>
         </scene>
         <!--Map View-->
         <scene sceneID="VeB-oY-MUy">
