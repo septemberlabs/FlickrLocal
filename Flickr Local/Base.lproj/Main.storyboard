@@ -220,7 +220,7 @@
                     <tabBarItem key="tabBarItem" title="Map" id="gGM-y2-dwd"/>
                     <connections>
                         <outlet property="mapView" destination="gcj-1g-fDE" id="qkx-Lm-1yf"/>
-                        <outlet property="searchDisplayController" destination="r1A-nw-0Vg" id="45I-yh-cGg"/>
+                        <outlet property="searchDisplayController" destination="r1A-nw-0Vg" id="RfW-Rn-Nho"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Rq-Ib-l4J" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,14 +9,16 @@
 #import "MapVC.h"
 
 @interface MapVC ()
-
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) UIImage *customPin;
-
+@property (strong, nonatomic) NSArray *searchResults; // of MKPlacemark
 @end
 
+
 @implementation MapVC
+
+@synthesize searchResults = _searchResults;
 
 - (void)viewDidLoad
 {
@@ -141,20 +143,45 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"numberOfRowsInSection called.");
-    return 0;
+    //NSLog(@"numberOfRowsInSection called.");
+    return [self.searchResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"cellForRowAtIndexPath called.");
-    return nil;
+    
+    static NSString *reusableCellIdentifier = @"searchResultsTableCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reusableCellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reusableCellIdentifier];
+    }
+    MKPlacemark *placemark = (MKPlacemark *)[self.searchResults objectAtIndex:indexPath.row];
+    cell.textLabel.text = placemark.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@, %@", placemark.locality, placemark.subAdministrativeArea, placemark.administrativeArea];
+    return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"numberOfSectionsInTableView called.");
-    return 0;
+    //NSLog(@"numberOfSectionsInTableView called.");
+    return 1;
+}
+
+- (NSArray *)searchResults
+{
+    if (!_searchResults) {
+        _searchResults = [NSArray array];
+        self.searchResults = _searchResults;
+    }
+    return _searchResults;
+}
+
+- (void)setSearchResults:(NSArray *)searchResults
+{
+    _searchResults = searchResults;
+    [self.searchDisplayController.searchResultsTableView reloadData];
+    self.searchDisplayController.searchResultsTableView.hidden = NO;
 }
 
 #pragma mark - Search Bar
@@ -184,10 +211,13 @@
         if (!error) {
             NSMutableArray *placemarks = [NSMutableArray array];
             for (MKMapItem *item in response.mapItems) {
-                [placemarks addObject:item.name];
+                [placemarks addObject:item.placemark];
             }
-            //[self.map removeAnnotations:[self.map annotations]];
-            //[self.map showAnnotations:placemarks animated:NO];
+            //NSLog(@"placemarks: %@", placemarks);
+            self.searchResults = placemarks;
+
+            //[self.mapView removeAnnotations:[self.mapView annotations]];
+            //[self.mapView showAnnotations:placemarks animated:NO];
         }
         else {
             NSLog(@"Search failed: %@", error.localizedDescription);
@@ -235,6 +265,7 @@
 - (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
 {
     NSLog(@"8 didShowSearchResultsTableView called.");
+    //tableView.hidden = YES;
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller willHideSearchResultsTableView:(UITableView *)tableView
@@ -249,14 +280,7 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    NSLog(@"11 shouldReloadTableForSearchString called.");
-    return YES;
-}
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
-{
-    NSLog(@"12 shouldReloadTableForSearchScope called.");
-    return YES;
+    return NO;
 }
 
 @end
