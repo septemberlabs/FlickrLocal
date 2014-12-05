@@ -7,6 +7,8 @@
 //
 
 #import "MapVC.h"
+#import "SimpleAnnotation.h"
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface MapVC ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -143,29 +145,65 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //NSLog(@"numberOfRowsInSection called.");
     return [self.searchResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cellForRowAtIndexPath called.");
-    
     static NSString *reusableCellIdentifier = @"searchResultsTableCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reusableCellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reusableCellIdentifier];
     }
     MKPlacemark *placemark = (MKPlacemark *)[self.searchResults objectAtIndex:indexPath.row];
+    
     cell.textLabel.text = placemark.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@, %@", placemark.locality, placemark.subAdministrativeArea, placemark.administrativeArea];
+    
+    // make the detail text the fully formatted address of the place.
+    cell.detailTextLabel.text = [self prepareAddressString:placemark withoutUS:YES];
+    
     return cell;
+}
+
+// give the option to suppress "United States" from the formatted address string.
+- (NSString *)prepareAddressString:(MKPlacemark *)placemark withoutUS:(BOOL)withoutUS
+{
+    NSMutableArray *linesOfAddress = placemark.addressDictionary[ @"FormattedAddressLines"];
+    if (withoutUS) {
+        // the last object in the array is the country.
+        NSString *country = [linesOfAddress lastObject];
+        if ([country isEqualToString:@"United States"]) {
+            [linesOfAddress removeLastObject];
+        }
+    }
+    NSString *addressString = [linesOfAddress componentsJoinedByString:@", "];
+    return addressString;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //NSLog(@"numberOfSectionsInTableView called.");
     return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self.searchDisplayController setActive:NO animated:YES];
+    
+    MKPlacemark *selectedSearchResult = self.searchResults[indexPath.row];
+
+    NSString *formattedAddressString = [self prepareAddressString:selectedSearchResult withoutUS:YES];
+    
+    // create a new annotation in order to set title and subtitle how we want. using MKPlacemark as the annotation doesn't permit that flexibility.
+    SimpleAnnotation *annotation = [[SimpleAnnotation alloc] initWithTitle:selectedSearchResult.name Location:selectedSearchResult.coordinate];
+    annotation.subtitle = formattedAddressString;
+
+    self.searchDisplayController.searchBar.text = formattedAddressString;
+    
+    // clear existing annotations and add our new one.
+    [self.mapView removeAnnotations:[self.mapView annotations]];
+    [self.mapView addAnnotation:annotation];
+    [self.mapView showAnnotations:[self.mapView annotations] animated:YES];
 }
 
 - (NSArray *)searchResults
@@ -181,48 +219,41 @@
 {
     _searchResults = searchResults;
     [self.searchDisplayController.searchResultsTableView reloadData];
-    self.searchDisplayController.searchResultsTableView.hidden = NO;
 }
 
-#pragma mark - Search Bar
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+#pragma mark - Search function
+- (void)executeSearch:(NSString *)searchString
 {
-    NSLog(@"searchBarTextDidEndEditing called.");
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    NSLog(@"searchBarSearchButtonClicked called with text: %@", searchBar.text);
-    
     // Create and initialize a search request object.
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    NSString *query = searchBar.text;
-    request.naturalLanguageQuery = query;
+    request.naturalLanguageQuery = searchString;
     // TO DO: set the region to the DMV
-    // request.region = self.map.region;
+    CLLocationCoordinate2D zeroMilestone; zeroMilestone.latitude = 38.895108; zeroMilestone.longitude = -77.036548;
+    request.region = MKCoordinateRegionMakeWithDistance(zeroMilestone, 50.0, 50.0);
     
     // Create and initialize a search object.
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
     
     // Start the search and display the results as annotations on the map.
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
-    {
-        if (!error) {
-            NSMutableArray *placemarks = [NSMutableArray array];
-            for (MKMapItem *item in response.mapItems) {
-                [placemarks addObject:item.placemark];
-            }
-            //NSLog(@"placemarks: %@", placemarks);
-            self.searchResults = placemarks;
-
-            //[self.mapView removeAnnotations:[self.mapView annotations]];
-            //[self.mapView showAnnotations:placemarks animated:NO];
-        }
-        else {
-            NSLog(@"Search failed: %@", error.localizedDescription);
-        }
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+         if (!error) {
+             NSMutableArray *placemarks = [NSMutableArray array];
+             for (MKMapItem *item in response.mapItems) {
+                 [placemarks addObject:item.placemark];
+             }
+             self.searchResults = placemarks;
+         }
+         else {
+             NSLog(@"Search failed: %@", error.localizedDescription);
+         }
     }];
+}
+
+#pragma mark - Search Bar
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self executeSearch:searchBar.text];
 }
 
 #pragma mark - UISearchDisplayDelegate
@@ -250,6 +281,7 @@
 - (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
 {
     NSLog(@"5 didLoadSearchResultsTableView called.");
+    //tableView.hidden = YES;
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller willUnloadSearchResultsTableView:(UITableView *)tableView
@@ -280,7 +312,8 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    return NO;
+    [self executeSearch:searchString];
+    return YES;
 }
 
 @end

@@ -23,6 +23,7 @@
 		1A6D5B251A1C0550003C5224 /* Fetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D5B241A1C0550003C5224 /* Fetcher.m */; };
 		1A7DB2481A1058F1009175AE /* HoodieTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7DB2471A1058F1009175AE /* HoodieTVC.m */; };
 		1A8E4B311A1D7E6A0010C452 /* FlickrMappedContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8E4B301A1D7E6A0010C452 /* FlickrMappedContent.m */; };
+		1AB8E7991A3156BD0046063F /* SimpleAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8E7981A3156BD0046063F /* SimpleAnnotation.m */; };
 		1AD800011A1E4820002905CF /* MapVC_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD800001A1E4820002905CF /* MapVC_old.m */; };
 		1AD8FFF81A1E2B82002905CF /* HoodieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD8FFF71A1E2B82002905CF /* HoodieVC.m */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,8 @@
 		1A7DB2471A1058F1009175AE /* HoodieTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoodieTVC.m; sourceTree = "<group>"; };
 		1A8E4B2F1A1D7E6A0010C452 /* FlickrMappedContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrMappedContent.h; sourceTree = "<group>"; };
 		1A8E4B301A1D7E6A0010C452 /* FlickrMappedContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrMappedContent.m; sourceTree = "<group>"; };
+		1AB8E7971A3156BD0046063F /* SimpleAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAnnotation.h; sourceTree = "<group>"; };
+		1AB8E7981A3156BD0046063F /* SimpleAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAnnotation.m; sourceTree = "<group>"; };
 		1AD800001A1E4820002905CF /* MapVC_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC_old.m; sourceTree = "<group>"; };
 		1AD8FFF61A1E2B82002905CF /* HoodieVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoodieVC.h; sourceTree = "<group>"; };
 		1AD8FFF71A1E2B82002905CF /* HoodieVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoodieVC.m; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				1A7DB2471A1058F1009175AE /* HoodieTVC.m */,
 				1A6D5B1E1A1B805E003C5224 /* MappedContent.h */,
 				1A6D5B1F1A1B805E003C5224 /* MappedContent.m */,
+				1AB8E7971A3156BD0046063F /* SimpleAnnotation.h */,
+				1AB8E7981A3156BD0046063F /* SimpleAnnotation.m */,
 				1A8E4B2F1A1D7E6A0010C452 /* FlickrMappedContent.h */,
 				1A8E4B301A1D7E6A0010C452 /* FlickrMappedContent.m */,
 				1A6D5B261A1C0985003C5224 /* Fetchers */,
@@ -295,6 +300,7 @@
 				1A62A25A1A22BB1900BB2415 /* ExclusiveSelectionList.m in Sources */,
 				1A6D5B201A1B805E003C5224 /* MappedContent.m in Sources */,
 				1A05852D1A292662009DD3DA /* HoodieTableViewCell.m in Sources */,
+				1AB8E7991A3156BD0046063F /* SimpleAnnotation.m in Sources */,
 				1AD8FFF81A1E2B82002905CF /* HoodieVC.m in Sources */,
 				1A577F471A08331300CF56F1 /* FlickrFetcher.m in Sources */,
 				1A6D5B251A1C0550003C5224 /* Fetcher.m in Sources */,
