@@ -31,7 +31,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self.fetcher fetchData];
+    [self fetchData];
     
     self.mapView.delegate = self;
     
@@ -47,6 +47,18 @@
         _fetcher.delegate = self;
     }
     return _fetcher;
+}
+
+- (void)setLocationWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude
+{
+    self.latitude = latitude;
+    self.longitude = longitude;
+    [self fetchData];
+}
+
+- (void)fetchData
+{
+    [self.fetcher fetchDataWithLatitude:self.latitude andLongitude:self.longitude];
 }
 
 - (void)receiveData:(NSArray *)fetchedResults
@@ -91,12 +103,12 @@
     cell.textBox.text = itemToDisplay.title;
     cell.leftUpperLabel.text = itemToDisplay.subtitle;
     
-    // if the thumbnail data exists display it immediately. if not, add a block off the main queue to go grab and store it.
-    if (itemToDisplay.thumbnail != nil) {
-        cell.imageContainerView.image = itemToDisplay.thumbnail;
+    // if the image data exists display it immediately. if not, add a block off the main queue to go grab and store it.
+    if (itemToDisplay.actualImage != nil) {
+        cell.imageContainerView.image = itemToDisplay.actualImage;
     }
     else {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:itemToDisplay.thumbnailURL]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:itemToDisplay.largeURL]];
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
         NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
@@ -104,7 +116,7 @@
                 if (!error) {
                     //NSLog(@"request.URL: %@", [request.URL absoluteString]);
                     //NSLog(@"photo.thumbnailURL: %@", photo.thumbnailURL);
-                    itemToDisplay.thumbnail = [UIImage imageWithData:[NSData dataWithContentsOfURL:localfile]];
+                    itemToDisplay.actualImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:localfile]];
                 }
             }];
         [task resume];

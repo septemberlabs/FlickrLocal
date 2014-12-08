@@ -16,7 +16,7 @@
 @property (nonatomic, weak) id<FetcherView> delegate; // once fetch is executed, resulting data is sent to this delegate
 @property (strong, nonatomic) NSURLSession *urlSession;
 
-- (void)fetchData; // essentially an abstract method that all subclasses must implement
+- (void)fetchDataWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude; // essentially an abstract method that all subclasses must implement
 
 // constants used for pre-chosen locations
 extern CLLocationCoordinate2D const home;

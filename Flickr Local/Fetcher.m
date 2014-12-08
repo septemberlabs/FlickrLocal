@@ -18,7 +18,19 @@ const float LATLON_RADIUS = 0.5; // radius from the given lat/lon for which to r
 
 @implementation Fetcher
 
-- (void)fetchData {}
+/* DELETE AFTER 12/13/14
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.latitudeToSearchWith = home.latitude;
+        self.longitudeToSearchWith = home.longitude;
+    }
+    return self;
+}
+ */
+
+- (void)fetchDataWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude {}
 
 - (NSURLSession *)urlSession
 {

@@ -7,8 +7,8 @@
 //
 
 #import "MapVC.h"
-#import "SimpleAnnotation.h"
 #import <AddressBookUI/AddressBookUI.h>
+#import "HoodieVC.h"
 
 @interface MapVC ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -195,14 +195,16 @@
     NSString *formattedAddressString = [self prepareAddressString:selectedSearchResult withoutUS:YES];
     
     // create a new annotation in order to set title and subtitle how we want. using MKPlacemark as the annotation doesn't permit that flexibility.
-    SimpleAnnotation *annotation = [[SimpleAnnotation alloc] initWithTitle:selectedSearchResult.name Location:selectedSearchResult.coordinate];
-    annotation.subtitle = formattedAddressString;
+    MKPointAnnotation *annotation2 = [[MKPointAnnotation alloc] init];
+    annotation2.title = selectedSearchResult.name;
+    annotation2.subtitle = formattedAddressString;
+    [annotation2 setCoordinate:selectedSearchResult.coordinate];
 
     self.searchDisplayController.searchBar.text = formattedAddressString;
     
     // clear existing annotations and add our new one.
     [self.mapView removeAnnotations:[self.mapView annotations]];
-    [self.mapView addAnnotation:annotation];
+    [self.mapView addAnnotation:annotation2];
     [self.mapView showAnnotations:[self.mapView annotations] animated:YES];
 }
 
@@ -222,6 +224,7 @@
 }
 
 #pragma mark - Search function
+
 - (void)executeSearch:(NSString *)searchString
 {
     // Create and initialize a search request object.
@@ -258,62 +261,26 @@
 
 #pragma mark - UISearchDisplayDelegate
 
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
-{
-    NSLog(@"1 searchDisplayControllerWillBeginSearch called.");
-}
-
-- (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
-{
-    NSLog(@"2 searchDisplayControllerDidBeginSearch called.");
-}
-
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
-{
-    NSLog(@"3 searchDisplayControllerWillEndSearch called.");
-}
-
-- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
-{
-    NSLog(@"4 searchDisplayControllerDidEndSearch called.");
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
-{
-    NSLog(@"5 didLoadSearchResultsTableView called.");
-    //tableView.hidden = YES;
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller willUnloadSearchResultsTableView:(UITableView *)tableView
-{
-    NSLog(@"6 willUnloadSearchResultsTableView called.");
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
-{
-    NSLog(@"7 willShowSearchResultsTableView called.");
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
-{
-    NSLog(@"8 didShowSearchResultsTableView called.");
-    //tableView.hidden = YES;
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller willHideSearchResultsTableView:(UITableView *)tableView
-{
-    NSLog(@"9 willHideSearchResultsTableView called.");
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
-{
-    NSLog(@"10 didHideSearchResultsTableView called.");
-}
-
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self executeSearch:searchString];
     return YES;
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //NSLog(@"prepareForSegue called. segue: %@, sender %@", [segue.destinationViewController description], sender);
+    NSString *segueIdentifier = @"ViewStoriesAtLocation";
+    if ([segue.identifier isEqualToString:segueIdentifier]) {
+        if ([segue.destinationViewController isKindOfClass:[HoodieVC class]]) {
+            HoodieVC *destinationVC = (HoodieVC *)segue.destinationViewController;
+            MKPointAnnotation *locationToSearch = [self.mapView.annotations lastObject];
+            destinationVC.latitude = locationToSearch.coordinate.latitude;
+            destinationVC.longitude = locationToSearch.coordinate.longitude;
+        }
+    }
 }
 
 @end

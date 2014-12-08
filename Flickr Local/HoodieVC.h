@@ -12,4 +12,7 @@
 
 @interface HoodieVC : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, FetcherView>
 
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
+
 @end

@@ -34,16 +34,22 @@
                                     <outlet property="delegate" destination="0Iw-rU-h0H" id="zpW-Sv-SVr"/>
                                 </connections>
                             </tableView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mJv-Px-XOW">
-                                <rect key="frame" x="0.0" y="397" width="600" height="90"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mJv-Px-XOW">
+                                <rect key="frame" x="0.0" y="397" width="600" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="Ore-MS-Ah9"/>
+                                </constraints>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="X8y-fO-mAC" secondAttribute="trailing" id="OOj-tj-S6x"/>
-                            <constraint firstItem="X8y-fO-mAC" firstAttribute="leading" secondItem="Qvh-wa-zgw" secondAttribute="leading" id="pfS-Op-BlP"/>
-                            <constraint firstItem="4ER-NP-8rK" firstAttribute="top" secondItem="X8y-fO-mAC" secondAttribute="bottom" constant="98" id="qaJ-X1-Pkv"/>
-                            <constraint firstItem="X8y-fO-mAC" firstAttribute="top" secondItem="b5g-dC-vnj" secondAttribute="bottom" id="qpG-uF-TWi"/>
+                            <constraint firstItem="mJv-Px-XOW" firstAttribute="trailing" secondItem="X8y-fO-mAC" secondAttribute="trailing" id="CV6-dI-z3f"/>
+                            <constraint firstItem="4ER-NP-8rK" firstAttribute="top" secondItem="mJv-Px-XOW" secondAttribute="bottom" constant="8" symbolic="YES" id="FE7-hA-iUJ"/>
+                            <constraint firstItem="X8y-fO-mAC" firstAttribute="leading" secondItem="Qvh-wa-zgw" secondAttribute="leading" id="alz-EK-LCv"/>
+                            <constraint firstAttribute="trailing" secondItem="X8y-fO-mAC" secondAttribute="trailing" id="dhn-rS-5wV"/>
+                            <constraint firstItem="mJv-Px-XOW" firstAttribute="top" secondItem="X8y-fO-mAC" secondAttribute="bottom" constant="8" symbolic="YES" id="o8O-J3-5fb"/>
+                            <constraint firstItem="X8y-fO-mAC" firstAttribute="top" secondItem="Qvh-wa-zgw" secondAttribute="top" id="odn-ag-oBK"/>
+                            <constraint firstItem="mJv-Px-XOW" firstAttribute="leading" secondItem="X8y-fO-mAC" secondAttribute="leading" id="tz8-bl-CZ7"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -55,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVC-Ht-Iom" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="-338"/>
+            <point key="canvasLocation" x="21" y="-1322"/>
         </scene>
         <!--Settings-->
         <scene sceneID="XAu-fL-lUg">
@@ -147,7 +153,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BI8-Wn-Pem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="408"/>
+            <point key="canvasLocation" x="-3" y="-576"/>
         </scene>
         <!--Exclusive Selection List-->
         <scene sceneID="pyz-Tu-24Z">
@@ -181,7 +187,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXZ-Wd-C4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="408"/>
+            <point key="canvasLocation" x="877" y="-576"/>
         </scene>
         <!--Map-->
         <scene sceneID="Hb9-Z8-twr">
@@ -205,11 +211,25 @@
                                     <outlet property="delegate" destination="OKL-gL-Hhy" id="G4A-Kj-N6s"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0w-P2-JcZ">
+                                <rect key="frame" x="245" y="513" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="zMW-Dd-tPg"/>
+                                </constraints>
+                                <state key="normal" title="See News Here">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0Iw-rU-h0H" kind="show" identifier="ViewStoriesAtLocation" id="8j5-iu-3Xi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gcj-1g-fDE" firstAttribute="bottom" secondItem="fWG-Jj-nqP" secondAttribute="top" id="5ZL-of-3ox"/>
+                            <constraint firstItem="d0w-P2-JcZ" firstAttribute="centerX" secondItem="eKu-6B-9zL" secondAttribute="centerX" id="CYZ-Hr-NCx"/>
                             <constraint firstItem="eKu-6B-9zL" firstAttribute="trailing" secondItem="gcj-1g-fDE" secondAttribute="trailing" id="GYA-x4-RNY"/>
+                            <constraint firstItem="fWG-Jj-nqP" firstAttribute="top" secondItem="d0w-P2-JcZ" secondAttribute="bottom" constant="8" symbolic="YES" id="IYN-ZL-CWp"/>
                             <constraint firstItem="gcj-1g-fDE" firstAttribute="leading" secondItem="9bJ-X7-tbT" secondAttribute="leading" id="OBN-mV-ACJ"/>
                             <constraint firstItem="eKu-6B-9zL" firstAttribute="leading" secondItem="gcj-1g-fDE" secondAttribute="leading" id="SLO-5O-HQ9"/>
                             <constraint firstAttribute="trailing" secondItem="gcj-1g-fDE" secondAttribute="trailing" id="Upv-6G-FfK"/>
@@ -234,7 +254,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-777" y="-1113"/>
+            <point key="canvasLocation" x="-893" y="-2097"/>
         </scene>
         <!--Map View-->
         <scene sceneID="VeB-oY-MUy">
@@ -252,7 +272,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpj-49-edQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-777" y="-338"/>
+            <point key="canvasLocation" x="-893" y="-1322"/>
         </scene>
         <!--Map-->
         <scene sceneID="tFZ-vP-ZWY">
@@ -272,7 +292,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suo-bp-Dcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1785" y="-95"/>
+            <point key="canvasLocation" x="-1901" y="-1079"/>
         </scene>
         <!--Options-->
         <scene sceneID="dOF-Cm-fFR">
@@ -291,7 +311,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJM-jN-iu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-777" y="408"/>
+            <point key="canvasLocation" x="-893" y="-576"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="n5s-3s-uZo"/>
+    </inferredMetricsTieBreakers>
 </document>

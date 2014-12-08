@@ -11,9 +11,9 @@
 
 @implementation FlickrFetcher
 
-- (void)fetchData
+- (void)fetchDataWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude;
 {
-    CLLocationCoordinate2D targetLocation = lincolnMemorial;
+    CLLocationCoordinate2D targetLocation = {latitude, longitude};
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[FlickrFetcher URLforLatLon:targetLocation withinRadius:LATLON_RADIUS]];
     NSLog(@"URL we're loading: %@", [[FlickrFetcher URLforLatLon:targetLocation withinRadius:LATLON_RADIUS] absoluteString]);
